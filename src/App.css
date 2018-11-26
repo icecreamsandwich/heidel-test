@@ -21,6 +21,17 @@
 .App-link {
   color: #61dafb;
 }
+.heidelForm{
+  background-color: antiquewhite;
+  display: inline-block;
+  text-align: center;
+  margin-left:250px;
+  width: 600px;
+  height: 300px;
+}
+.desc{
+  font-size: 12px
+}
 
 @keyframes App-logo-spin {
   from {
