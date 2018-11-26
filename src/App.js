@@ -22,48 +22,32 @@ class App extends Component {
 
   handleCountryChange(event) {
      this.setState({country: event.target.value});
-    //  console.log("country:"+event.target.value);
-    //  alert('A name was submitted: ' + event.target.value);
   }
   handleNumberChange(event) {
-    // this.setState({number: event.target.value});
-    // console.log("number:"+event.target.value);
+     this.setState({number: event.target.value});
   }
 
-  handleSubmit() {
-    // var OP1 = {
-    //   "91" :  1.1,
-    //   "92" :  1.2,
-    //   "931" :  1.6,
-    //   "961" : 3.6,
-    //   "268": 5.1,
-    //   "46" : 0.17,
-    //   "4620": 0.0,
-    //   "468": 0.15,
-    //   "4631": 0.15,
-    //   "4673" : 0.9,
-    //   "4672": 1.1
-    // }
-    // var OP2 =   {
-    //  "971" : 1.4,
-    //  "972" : 0.5,
-    //  "961" : 3.6,
-    //   "46" : 0.13,
-    //   "4620": 0.6,
-    //   "468": 0.47,
-    //   "4631": 0.10,
-    //   "4673" : 0.3,
-    //   "4672": 1.0
-    // }
-    
+  handleSubmit() {  
+    //chek if the prefix and number contains numbers only
+    var isnum = /^\d+$/;
+    if(!isnum.test(this.state.country) || !isnum.test(this.state.number)){
+      alert("Please enter numbers only");
+      return false;
+    }
     //Create two operator object randomly with some price lists
     var OP1 = { };
-    for (var i = 0; i < 999; i++) {
+    var OP2 = { };
+    for (var i = 0; i < 555; i++) {
       OP1[i] = i/50
     }
-    var OP2 = { };
-    for (var i2 = 0; i2 < 999; i2++) {
-      OP2[i2] = i2/49
+    for (var i3 = 555; i3 < 999; i3++) {
+      OP1[i3] = i3/55
+    }
+    for (var i2 = 0; i2 < 555; i2++) {
+      OP2[i2] = i2/48
+    }
+    for (var i4 = 555; i4 < 999; i4++) {
+      OP2[i4] = i4/60
     }
 
     console.log(OP1);
@@ -82,11 +66,6 @@ class App extends Component {
           var result1 = val;
           var prefixFound = true;
        }
-       
-        // if(countryCode == this.state.country){ 
-        //   var result1 = val;
-        //   var prefixFound = true;
-        // }
       }
     }
 
@@ -94,17 +73,13 @@ class App extends Component {
         for (var key in OP2) {
           if (OP2.hasOwnProperty(key)) {
             var val2 = OP2[key];
-            if( key.charAt( 0 ) === '+' ) countryCode2 = key.slice(1);
+            if( key.charAt( 0 ) === '+' ) countryCode2 = key.slice(1) ;
             else countryCode2 = key;
             if (this.state.country.match("^"+countryCode2)) {
               // do this if begins with particular country code
-              var result2 = val;
-              var prefixFound2 = true;
-           }
-            /* if(countryCode2 == this.state.country){ 
               var result2 = val2;
               var prefixFound2 = true;
-            } */
+           }
           }
          }
 
@@ -171,7 +146,7 @@ class App extends Component {
         Both operator 1 and 2 have same charge for this number
       </label>:""}
 
-      {(this.state.result)? 
+      {(this.state.resultA && this.state.resultB)? 
          <label>
          You will be charged {this.state.resultA} per minute as per {this.state.operatorA} and    
        <br/>
@@ -179,8 +154,7 @@ class App extends Component {
        <br/>
        So better choose {this.state.operator}
       </label>
-        :""}
-     
+        :""}     
        </div>
       
     );

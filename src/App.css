@@ -21,13 +21,16 @@
 .App-link {
   color: #61dafb;
 }
+body{
+  background-color: antiquewhite;
+}
 .heidelForm{
   background-color: antiquewhite;
   display: inline-block;
   text-align: center;
   margin-left:250px;
   width: 600px;
-  height:768px;
+  height:700px;
 }
 .desc{
   font-size: 12px
